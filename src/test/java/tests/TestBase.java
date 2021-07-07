@@ -29,7 +29,7 @@ public class TestBase {
     }
 
     @AfterEach
-    public static void tearDown() {
+    public void tearDown() {
         String sessionId = getSessionId();
 
         Attach.screenshotAs("Last screenshot");
