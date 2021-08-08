@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static config.Credentials.credentials;
 
 public class TestBase {
 
@@ -25,7 +26,8 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+        Configuration.remote = String.format("https://%s:%s@%s/wd/hub/",
+                credentials.getLogin(), credentials.getPassword(), System.getProperty("url"));
     }
 
     @AfterEach
